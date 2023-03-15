@@ -3,7 +3,7 @@ import Form from "./Form";
 import Todo from "./Todo";
 
 function TodoList() {
-  const [todos, settodos] = [];
+  const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
     if (!todo.hasOwnProperty("text") || todo.text === "") {
@@ -11,7 +11,7 @@ function TodoList() {
     }
 
     const newTodos = [todo, ...todos];
-    settodos(newTodos);
+    setTodos(newTodos);
   };
 
   const completeTodo = (id) => {
@@ -21,13 +21,14 @@ function TodoList() {
       }
       return todo;
     });
+    setTodos(updatesTodos);
   };
 
   return (
     <div>
       <h1>What we have to do today</h1>
       <Form onSubmit={addTodo} />
-      <Todo />
+      <Todo todos={todos} completeTodo={completeTodo} />
     </div>
   );
 }
