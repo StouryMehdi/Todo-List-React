@@ -3,11 +3,23 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 import Form from "./Form";
 
-function Todo({ todos, completeTodo, removeTodo }) {
+function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
   const [edit, setEdit] = useState({
     id: null,
     value: "",
   });
+
+  const submitUpdate = (value) => {
+    updateTodo(edit.id, value);
+    setEdit({
+      id: null,
+      value: "",
+    });
+  };
+
+  if (edit.id) {
+    return <Form edit={edit} onSubmit={submitUpdate} />;
+  }
 
   return (
     <>
