@@ -4,8 +4,10 @@ function FileUploadMultiple() {
   const [fileList, setFileList] = useState([]);
 
   const handleFileChange = (e) => {
-    const newFiles = Array.from(e.target.files); // Convert the FileList to an array
-    setFileList((prevFileList) => [...prevFileList, ...newFiles]);
+    // const newFiles = Array.from(e.target.files); // Convert the FileList to an array
+    setFileList((prevFileList) => [...prevFileList, ...e.target.files]);
+    // const newFiles = Array.from(e.target.files); // Convert the FileList to an array
+    // setFileList((prevFileList) => [...prevFileList, ...newFiles]);
   };
 
   const handleUploadClick = () => {
@@ -46,7 +48,7 @@ function FileUploadMultiple() {
               <img
                 src={URL.createObjectURL(file)}
                 alt={file.name}
-                style={{ maxWidth: "100px" }}
+                style={{ maxWidth: "80px" }}
               />
             </div>
           </li>
