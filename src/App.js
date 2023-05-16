@@ -6,7 +6,7 @@ import FileUploadMultiple from "./components/FileUploadMultiple";
 function App() {
   return (
     <>
-      <div className="App">
+      <div className="test">
         <List />
         <br />
         <FileUploadMultiple />
